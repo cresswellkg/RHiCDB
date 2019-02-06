@@ -199,8 +199,8 @@ if(ref!='no'){
 ##################################################################################################################
 
 if(FLAG==1){
-  tmp=list.files(path=hicfile,pattern='chr.*\\.matrix')
-  totalchr=length(tmp)
+  #tmp=list.files(path=hicfile,pattern='chr.*\\.matrix')
+  totalchr=length(hicfile)
   allpeaks=as.data.frame(matrix(numeric(0),ncol=4))
   allLRI=as.data.frame(matrix(numeric(0),ncol=4))
   allaRI=as.data.frame(matrix(numeric(0),ncol=4))
@@ -268,8 +268,8 @@ if(FLAG==1){
     hicfile2=hicfile[[2]][1];
     # sample 1
     print(paste('A. Processing the first sample ',hicfile1));
-    tmp=list.files(path=hicfile1,pattern='chr.*\\.matrix')
-    totalchr=length(tmp)
+    #tmp=list.files(path=hicfile1,pattern='chr.*\\.matrix')
+    totalchr=length(hicfile)
     allpeaks=as.data.frame(matrix(numeric(0),ncol=4))
     allLRI=as.data.frame(matrix(numeric(0),ncol=4))
     allaRI=as.data.frame(matrix(numeric(0),ncol=4))
@@ -277,7 +277,7 @@ if(FLAG==1){
     
     for( i in 1:totalchr){
       print(paste('Processing chr',i,sep=""))
-      hicmap=paste(hicfile1,'/chr',i,'.matrix',sep="")
+      hicmap=paste('/chr',i,'.matrix',sep="")
       out=chrpeaks(hicmap,resolution,chrsizes[i],mind,wd,wdsize,i)
       allpeaks=rbind(allpeaks,out$localmax)
       allLRI=rbind(allLRI,out$LRI)
@@ -302,8 +302,8 @@ if(FLAG==1){
     
     # sample 2
     print(paste('B. Processing the second sample ',hicfile2));
-    tmp=list.files(path=hicfile2,pattern='chr.*\\.matrix')
-    totalchr=length(tmp)
+    #tmp=list.files(path=hicfile2,pattern='chr.*\\.matrix')
+    totalchr=length(hicfile)
     allpeaks=as.data.frame(matrix(numeric(0),ncol=4))
     allLRI=as.data.frame(matrix(numeric(0),ncol=4))
     allaRI=as.data.frame(matrix(numeric(0),ncol=4))
@@ -398,8 +398,8 @@ if(FLAG==1){
   ##################################################################################################################
   n1=length(hicfile[[1]])
   n2=length(hicfile[[2]])
-  tmp=list.files(path=hicfile[[1]][1],pattern='chr.*\\.matrix')
-  totalchr=length(tmp)
+  #tmp=list.files(path=hicfile[[1]][1],pattern='chr.*\\.matrix')
+  totalchr=length(hicfile)
   inni=as.data.frame(matrix(numeric(0),ncol=5))
   allpeaks=list(inni,inni)
   aRI=as.data.frame(matrix(numeric(0),ncol=3+n1+n2))
