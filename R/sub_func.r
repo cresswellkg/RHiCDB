@@ -16,7 +16,7 @@
 mydist<-function(loc1,loc2){
 X=as.matrix(loc1)
 Y=as.matrix(loc2)
-dist=outer(seq(length(X)),seq(length(Y)), Vectorize(function(i, j) abs(X[i]-Y[j])))
+dist=as.matrix(outer(seq(length(X)),seq(length(Y)), Vectorize(function(i, j) abs(X[i]-Y[j]))))
 return(dist)
 }
 
