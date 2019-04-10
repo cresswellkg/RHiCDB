@@ -21,8 +21,14 @@ return(dist)
 }
 
 read2dense<-function(hicfile,N,resolution){
-  triple = as.matrix(hicfile)
-  
+  # read hicmatrix
+  if(length(hicfile)==1){
+  triple_ = read.table(hicfile,stringsAsFactors =FALSE)
+  triple = as.matrix(triple_)
+  }else{
+  triple= as.matrix(hicfile)
+  }
+
  if (nrow(triple)==ncol(triple)){
     im=triple
     N=nrow(triple)

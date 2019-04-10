@@ -199,8 +199,8 @@ if(ref!='no'){
 ##################################################################################################################
 
 if(FLAG==1){
-  #tmp=list.files(path=hicfile,pattern='chr.*\\.matrix')
-  totalchr=length(hicfile)
+  tmp=list.files(path=hicfile,pattern='chr.*\\.matrix')
+  totalchr=length(tmp)
   allpeaks=as.data.frame(matrix(numeric(0),ncol=4))
   allLRI=as.data.frame(matrix(numeric(0),ncol=4))
   allaRI=as.data.frame(matrix(numeric(0),ncol=4))
@@ -268,8 +268,8 @@ if(FLAG==1){
     hicfile2=hicfile[[2]][1];
     # sample 1
     print(paste('A. Processing the first sample ',hicfile1));
-    #tmp=list.files(path=hicfile1,pattern='chr.*\\.matrix')
-    totalchr=length(hicfile)
+    tmp=list.files(path=hicfile1,pattern='chr.*\\.matrix')
+    totalchr=length(tmp)
     allpeaks=as.data.frame(matrix(numeric(0),ncol=4))
     allLRI=as.data.frame(matrix(numeric(0),ncol=4))
     allaRI=as.data.frame(matrix(numeric(0),ncol=4))
@@ -277,7 +277,7 @@ if(FLAG==1){
     
     for( i in 1:totalchr){
       print(paste('Processing chr',i,sep=""))
-      hicmap=paste('/chr',i,'.matrix',sep="")
+      hicmap=paste(hicfile1,'/chr',i,'.matrix',sep="")
       out=chrpeaks(hicmap,resolution,chrsizes[i],mind,wd,wdsize,i)
       allpeaks=rbind(allpeaks,out$localmax)
       allLRI=rbind(allLRI,out$LRI)
@@ -302,8 +302,8 @@ if(FLAG==1){
     
     # sample 2
     print(paste('B. Processing the second sample ',hicfile2));
-    #tmp=list.files(path=hicfile2,pattern='chr.*\\.matrix')
-    totalchr=length(hicfile)
+    tmp=list.files(path=hicfile2,pattern='chr.*\\.matrix')
+    totalchr=length(tmp)
     allpeaks=as.data.frame(matrix(numeric(0),ncol=4))
     allLRI=as.data.frame(matrix(numeric(0),ncol=4))
     allaRI=as.data.frame(matrix(numeric(0),ncol=4))
@@ -398,8 +398,8 @@ if(FLAG==1){
   ##################################################################################################################
   n1=length(hicfile[[1]])
   n2=length(hicfile[[2]])
-  #tmp=list.files(path=hicfile[[1]][1],pattern='chr.*\\.matrix')
-  totalchr=length(hicfile)
+  tmp=list.files(path=hicfile[[1]][1],pattern='chr.*\\.matrix')
+  totalchr=length(tmp)
   inni=as.data.frame(matrix(numeric(0),ncol=5))
   allpeaks=list(inni,inni)
   aRI=as.data.frame(matrix(numeric(0),ncol=3+n1+n2))
@@ -550,9 +550,9 @@ if(FLAG==1){
       chrpos4=which(CDB_B[,1]==conchr)
       CDBcenter4=(CDB_B[chrpos4,2]+CDB_B[chrpos4,3])/2
       
-      pos=apply(mydist(CDBcenter3,CDBcenter1),2,min)<= resolution/2+1  
+      pos=apply(as.matrix(mydist(CDBcenter3,CDBcenter1)),2,min)<= resolution/2+1  
       CDB1[chrpos1,6]=1-as.numeric(pos)
-      pos=apply(mydist(CDBcenter4,CDBcenter2),2,min)<= resolution/2+1 
+      pos=apply(as.matrix(mydist(CDBcenter4,CDBcenter2)),2,min)<= resolution/2+1 
       CDB2[chrpos2,6]=1-as.numeric(pos)              
     }
   }
@@ -563,4 +563,3 @@ if(FLAG==1){
 }
   
   }
-
