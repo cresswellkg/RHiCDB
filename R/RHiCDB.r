@@ -345,7 +345,7 @@ if(FLAG==1){
         conserve=cbind(conserve[,1],(conserve[,2]+conserve[,3])/2)
         CDB1=cbind(CDB1,rep(0,nrow(CDB1)),rep(0,nrow(CDB1)))
         CDB2=cbind(CDB2,rep(0,nrow(CDB2)),rep(0,nrow(CDB2)))
-        for(conchr in 1:23){
+        for(conchr in 1:length(list.files(hicfile[[1]]))) {
           contmp=conserve[conserve[,1]==conchr,2]
           #conserve  or not  
           chrpos1=which(CDB1[,1]==conchr)
